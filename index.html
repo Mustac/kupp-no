@@ -208,12 +208,12 @@ footer a{color:var(--ink)}
 <footer>
   <div class="wrap">
     Sources (read 17 Nov 2026):
-    <a href="https://www.tek.no/i/wAr0An">Tek.no Black Week guide</a> ·
-    <a href="https://www.kitchn.no/kampanje/blackfriday/">Kitchn</a> ·
-    <a href="https://www.scandinavianphoto.no/kampanjer/black-week">Scandinavian Photo</a> ·
-    <a href="https://www.gamerguide.no/nyhet/black-friday-gaming-deals-2024-de-beste-tilbudene-p%C3%A5-gaming-pc-og-gamingutstyr">Gamerguide (Komplett, Greencom)</a> ·
-    <a href="https://www.telenor.no/black-week/">Telenor</a> ·
-    <a href="https://www.tek.no/i/53VdWK">Tek.no on inflated prices</a>.
+    <a target="_blank" rel="noopener" href="https://www.tek.no/i/wAr0An">Tek.no Black Week guide</a> ·
+    <a target="_blank" rel="noopener" href="https://www.kitchn.no/kampanje/blackfriday/">Kitchn</a> ·
+    <a target="_blank" rel="noopener" href="https://www.scandinavianphoto.no/kampanjer/black-week">Scandinavian Photo</a> ·
+    <a target="_blank" rel="noopener" href="https://www.gamerguide.no/nyhet/black-friday-gaming-deals-2024-de-beste-tilbudene-p%C3%A5-gaming-pc-og-gamingutstyr">Gamerguide (Komplett, Greencom)</a> ·
+    <a target="_blank" rel="noopener" href="https://www.telenor.no/black-week/">Telenor</a> ·
+    <a target="_blank" rel="noopener" href="https://www.tek.no/i/53VdWK">Tek.no on inflated prices</a>.
     Product photos load from each shop's website; where a shop gives no photo, or the browser can't load it, you see an icon for the product type. Discount % is calculated from the sale and before prices listed by each source. Not affiliated with any shop.
   </div>
 </footer>
@@ -479,7 +479,7 @@ function openSheet(d){
       <div class="note">${refTxt}${d.flag==="rec"?" Prisjakt's price history shows this is the lowest price since launch.":""} For the full price history graph, open Prisjakt below.</div>
     </div>
     ${SRC[d.src].note?`<div class="note">${SRC[d.src].note}</div>`:""}
-    <div class="acts"><a class="pri" href="${pj(d)}">📈 Price history on Prisjakt</a><a href="${d.url||SRC[d.src].url}">${d.url?"Open in "+esc(d.shop):"Go to deal"}</a></div>
+    <div class="acts"><a class="pri" target="_blank" rel="noopener" href="${pj(d)}">📈 Price history on Prisjakt</a><a target="_blank" rel="noopener" href="${d.url||SRC[d.src].url}">${d.url?"Open in "+esc(d.shop):"Go to deal"}</a></div>
    </div>`;
   wireImgs($("sheet"));
   $("ov").classList.add("show");lockPage();$("sheet").scrollTop=0;
