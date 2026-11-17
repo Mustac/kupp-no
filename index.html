@@ -100,9 +100,10 @@ h2{font-family:"Bricolage Grotesque",sans-serif;font-size:24px;margin:2px 0 4px;
 .morebtn:hover{border-color:var(--acc);color:var(--acc)}
 .empty{color:var(--mute);padding:40px 0;text-align:center}
 /* detail sheet */
-.ov{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:20;align-items:flex-end;justify-content:center}
+body.lock{overflow:hidden;position:fixed;left:0;right:0;width:100%}
+.ov{overscroll-behavior:contain;position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:20;align-items:flex-end;justify-content:center}
 .ov.show{display:flex}
-.sheet{background:var(--panel);border:1px solid var(--line);border-radius:18px 18px 0 0;width:100%;max-width:560px;max-height:92vh;overflow:auto;padding:0 0 20px}
+.sheet{overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;background:var(--panel);border:1px solid var(--line);border-radius:18px 18px 0 0;width:100%;max-width:560px;max-height:92vh;overflow:auto;padding:0 0 20px}
 @media(min-width:700px){.ov{align-items:center}.sheet{border-radius:18px}}
 .sheet .thumb{height:170px}.sheet .thumb svg{width:84px;height:84px}
 .x{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.5);border:none;border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:18px}
@@ -122,7 +123,8 @@ footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--mute);fo
 footer a{color:var(--ink)}
 @media(max-width:860px){
   .layout{grid-template-columns:1fr}
-  aside{display:none;position:fixed;inset:0;z-index:15;max-height:none;border-radius:0;padding:18px}
+  aside{display:none;position:fixed;inset:0;z-index:15;max-height:none;height:100%;height:100dvh;border-radius:0;padding:18px 18px 0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y}
+  .closef{position:sticky;bottom:0;margin:16px -18px 0;width:calc(100% + 36px)!important;border-radius:0!important;padding:16px!important;box-shadow:0 -8px 20px rgba(0,0,0,.4)}
   aside.show{display:block}
   .fbtn{display:block}
   .closef{display:block!important}
@@ -464,10 +466,10 @@ function openSheet(d){
     <div class="acts"><a class="pri" href="${pj(d)}">📈 Price history on Prisjakt</a><a href="${d.url||SRC[d.src].url}">${d.url?"Open in "+esc(d.shop):"Go to deal"}</a></div>
    </div>`;
   wireImgs($("sheet"));
-  $("ov").classList.add("show");
+  $("ov").classList.add("show");lockPage();$("sheet").scrollTop=0;
   $("x").onclick=closeSheet;
 }
-function closeSheet(){$("ov").classList.remove("show");}
+function closeSheet(){$("ov").classList.remove("show");if(!$("side").classList.contains("show"))unlockPage();}
 $("ov").onclick=e=>{if(e.target.id==="ov")closeSheet();};
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet();});
 
@@ -515,8 +517,11 @@ function resetAll(){Object.assign(S,{cat:"",subs:new Set(),q:"",min:30,pmin:"",p
   $("q").value="";$("min").value=30;$("minv").textContent="30%";$("pmin").value=$("pmax").value="";
   $("real").checked=$("reconly").checked=$("noclub").checked=false;$("sort").value="best";setHash();render();}
 $("reset").onclick=resetAll;$("home").onclick=resetAll;
-$("fbtn").onclick=()=>$("side").classList.add("show");
-$("closef").onclick=()=>$("side").classList.remove("show");
+let lockY=0;
+function lockPage(){if(document.body.classList.contains("lock"))return;lockY=window.scrollY;document.body.style.top=(-lockY)+"px";document.body.classList.add("lock");}
+function unlockPage(){if(!document.body.classList.contains("lock"))return;document.body.classList.remove("lock");document.body.style.top="";window.scrollTo(0,lockY);}
+$("fbtn").onclick=()=>{$("side").classList.add("show");$("side").scrollTop=0;lockPage();};
+$("closef").onclick=()=>{$("side").classList.remove("show");unlockPage();};
 window.addEventListener("hashchange",()=>{readHash();render();});
 
 loadData().then(()=>{readHash();render();}).catch(e=>{$("grid").innerHTML='<div class="empty">Could not load the deals. Please reload the page.</div>';console.error(e);});
