@@ -11,3 +11,10 @@ A deals website showing only the big discounts from Norwegian online shops durin
 **Snapshot from 17 November 2026.** Prices change fast during Black Week; always check the price history before buying.
 
 Live site: https://mustac.github.io/kupp-no/
+
+## How the data works
+
+- `data/curated.json` – hand-checked deals (Tek.no picks, Kitchn, Scandinavian Photo, Komplett, Greencom, Telenor)
+- `data/raw/<shop>.json` – deals read from each shop's own Black Week pages
+- `tools/build.py` – merges everything, keeps deals ≥30% off, sorts each product into a category (`tools/classify.py`) and writes `data/deals.json`
+- `index.html` loads `data/deals.json`

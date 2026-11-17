@@ -96,6 +96,8 @@ h2{font-family:"Bricolage Grotesque",sans-serif;font-size:24px;margin:2px 0 4px;
 .was{color:var(--mute);text-decoration:line-through;font-size:13px}
 .save{color:var(--acc);font-size:12.5px;font-weight:600}
 .refw{color:var(--warn);font-size:11px}
+.morebtn{grid-column:1/-1;margin:6px 0 10px;padding:13px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-weight:600;cursor:pointer}
+.morebtn:hover{border-color:var(--acc);color:var(--acc)}
 .empty{color:var(--mute);padding:40px 0;text-align:center}
 /* detail sheet */
 .ov{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:20;align-items:flex-end;justify-content:center}
@@ -208,7 +210,7 @@ speakers:"M13 5h22v38H13z M24 30m-7 0a7 7 0 1 0 14 0a7 7 0 1 0-14 0 M24 15m-3 0a
 soundbars:"M8 8h32v18H8z M4 34h40v8H4z M12 38h.01 M18 38h.01 M24 38h.01 M30 38h.01 M36 38h.01",
 tv:"M5 9h38v25H5z M18 41h12 M24 34v7",
 phones:"M15 4h18v40H15z M22 39h4 M21 8h6",
-tablets:"M16 14h16v20H16z M19 14l2-9h6l2 9 M19 34l2 9h6l2-9 M32 22h3",
+tablets:"M10 5h28v38H10z M21 38h6",
 chargers:"M18 5v9 M30 5v9 M13 14h22v8a11 11 0 0 1-22 0z M24 33v10",
 phoneacc:"M24 13a11 11 0 1 1 0 22a11 11 0 0 1 0-22z M24 22a2 2 0 1 1 0 4a2 2 0 0 1 0-4z M9 10a21 21 0 0 0 0 28 M39 10a21 21 0 0 1 0 28",
 music:"M4 12h40v24H4z M15 24m-6 0a6 6 0 1 0 12 0a6 6 0 1 0-12 0 M33 24m-6 0a6 6 0 1 0 12 0a6 6 0 1 0-12 0",
@@ -252,7 +254,33 @@ tableware:"M24 8a16 16 0 1 1 0 32a16 16 0 0 1 0-32z M24 16a8 8 0 1 1 0 16a8 8 0 
 food:"M6 18h36v8H6z M10 26h28v17H10z M24 18v25 M24 18c-4-9-13-9-10-2 M24 18c4-9 13-9 10-2",
 hair:"M8 10h22a10 10 0 0 1 0 20H22 M8 10v20h14 M17 30l-4 14h6l4-14 M38 15h6 M38 25h6",
 wellness:"M24 41S6 31 6 18a9 9 0 0 1 18-4a9 9 0 0 1 18 4c0 13-18 23-18 23z",
-all:"M8 8h14v14H8z M26 8h14v14H26z M8 26h14v14H8z M26 26h14v14H26z"
+all:"M8 8h14v14H8z M26 8h14v14H26z M8 26h14v14H8z M26 26h14v14H26z",
+watches:"M16 14h16v20H16z M19 14l2-9h6l2 9 M19 34l2 9h6l2-9 M32 22h3",
+gpu:"M4 14h40v20H4z M14 24m-6 0a6 6 0 1 0 12 0a6 6 0 1 0-12 0 M32 24m-6 0a6 6 0 1 0 12 0a6 6 0 1 0-12 0 M8 34v6 M20 34v6",
+network:"M8 30h32v10H8z M14 35h.01 M20 35h.01 M16 30l-4-14 M32 30l4-14 M18 12a9 9 0 0 1 12 0 M14 8a15 15 0 0 1 20 0",
+consoles:"M10 8h28v32H10z M16 14h16v12H16z M18 34h.01 M30 34h.01",
+games:"M10 4h24l4 4v36H10z M16 12h16 M16 18h10 M24 34m-5 0a5 5 0 1 0 10 0a5 5 0 1 0-10 0",
+controllers:"M14 16h20a10 10 0 0 1 9 14l-3 7a4 4 0 0 1-7 0l-3-5H18l-3 5a4 4 0 0 1-7 0l-3-7a10 10 0 0 1 9-14z M14 22v6 M11 25h6 M32 24h.01 M36 26h.01",
+drones:"M18 20h12v8H18z M10 14m-6 0a6 3 0 1 0 12 0a6 3 0 1 0-12 0 M38 14m-6 0a6 3 0 1 0 12 0a6 3 0 1 0-12 0 M10 34m-6 0a6 3 0 1 0 12 0a6 3 0 1 0-12 0 M38 34m-6 0a6 3 0 1 0 12 0a6 3 0 1 0-12 0 M14 16l4 5 M34 16l-4 5 M14 32l4-5 M34 32l-4-5",
+washers:"M8 4h32v40H8z M8 12h32 M14 8h.01 M20 8h.01 M24 28m-10 0a10 10 0 1 0 20 0a10 10 0 1 0-20 0 M18 30c3-3 9-1 12-4",
+fridges:"M12 4h24v40H12z M12 20h24 M17 10v5 M17 25v8",
+dishwashers:"M8 4h32v40H8z M8 12h32 M14 8h20 M14 20h20v18H14z M18 26h12 M18 32h12",
+ovens:"M6 6h36v36H6z M6 14h36 M12 10h.01 M18 10h.01 M30 10h6 M12 20h24v16H12z",
+vacuums:"M30 4l-6 30 M24 34h-10a4 4 0 0 0 0 8h14l2-8 M30 4h6 M14 42h.01",
+climate:"M24 4v40 M10 12l28 24 M38 12L10 36 M18 6l6 6 6-6 M18 42l6-6 6 6",
+security:"M24 4l16 6v12c0 10-7 18-16 22c-9-4-16-12-16-22V10z M24 18a4 4 0 1 1 0 8a4 4 0 0 1 0-8z",
+garden:"M24 44V20 M24 20c0-8 6-14 14-14c0 8-6 14-14 14z M24 26c0-6-5-10-12-10c0 6 5 10 12 10z M10 44h28",
+coffee:"M8 16h26v14a10 10 0 0 1-10 10h-6A10 10 0 0 1 8 30z M34 20h4a5 5 0 0 1 0 10h-4 M16 4c-2 3 2 5 0 8 M24 4c-2 3 2 5 0 8 M6 44h32",
+shaving:"M16 4h16v14H16z M18 18h12l-2 26h-8z M16 9h16",
+oral:"M22 4h4v20h-4z M20 24h8v20h-8z M22 8h4 M22 12h4 M22 16h4",
+skincare:"M18 4h12v6H18z M14 10h20v34H14z M14 20h20",
+lego:"M6 18h36v22H6z M12 12h8v6h-8z M28 12h8v6h-8z",
+toys:"M24 8a8 8 0 1 1 0 16a8 8 0 0 1 0-16z M14 10a4 4 0 1 1 0 .1 M34 10a4 4 0 1 1 0 .1 M12 44c0-12 6-20 12-20s12 8 12 20z",
+bikes:"M10 34m-7 0a7 7 0 1 0 14 0a7 7 0 1 0-14 0 M38 34m-7 0a7 7 0 1 0 14 0a7 7 0 1 0-14 0 M10 34l8-16h12l8 16 M18 18l6 16h4 M28 10h6l-4 8",
+fitness:"M4 20v8 M44 20v8 M8 16v16h4V16z M36 16v16h4V16z M12 24h24",
+outdoor:"M4 42L20 12l8 14 4-6 12 22z M18 28l4 4 4-4",
+other:"M10 16l14-8 14 8v18l-14 8-14-8z M10 16l14 8 14-8 M24 24v18",
+printers:"M14 5h20v11H14z M6 16h36v17H6z M14 28h20v15H14z M18 34h12 M18 38h8"
 };
 document.getElementById("icons").innerHTML=Object.entries(IC).map(([k,d])=>
  `<symbol id="i-${k}" viewBox="0 0 48 48"><path d="${d}" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>`).join("");
@@ -260,353 +288,47 @@ const ico=k=>`<svg><use href="#i-${k}"/></svg>`;
 
 // ---------- taxonomy ----------
 const CATS=[
- {id:"electronics",name:"Electronics",c:"#4fc3ff",icon:"headphones",subs:[
-  ["headphones","Headphones"],["earbuds","Earbuds"],["speakers","Speakers"],["soundbars","Soundbars & TV sound"],["tv","TVs"],
-  ["phones","Phones"],["tablets","Tablets & watches"],["chargers","Chargers, cables & hubs"],["phoneacc","Cases & trackers"],["music","DJ & music gear"]]},
- {id:"computers",name:"Computers & Gaming",c:"#b18cff",icon:"cpu",subs:[
-  ["laptops","Laptops"],["desktops","Gaming & mini PCs"],["monitors","Monitors"],["cpu","CPUs"],["motherboards","Motherboards"],
+ {id:"electronics",name:"TV, Sound & Mobile",c:"#4fc3ff",icon:"headphones",subs:[
+  ["tv","TVs & projectors"],["soundbars","Soundbars"],["speakers","Speakers"],["headphones","Headphones"],["earbuds","Earbuds"],
+  ["phones","Phones"],["tablets","Tablets & e-readers"],["watches","Smartwatches"],["chargers","Chargers, cables & hubs"],["phoneacc","Cases & trackers"],["music","DJ & music gear"]]},
+ {id:"computers",name:"Computers",c:"#b18cff",icon:"laptops",subs:[
+  ["laptops","Laptops"],["desktops","Desktop & mini PCs"],["monitors","Monitors"],["cpu","CPUs"],["gpu","Graphics cards"],["motherboards","Motherboards"],
   ["ram","Memory (RAM)"],["storage","SSD & storage"],["psu","Power supplies"],["cases","PC cases"],["cooling","Cooling & fans"],
-  ["keyboards","Keyboards"],["mice","Mice"],["gheadsets","Gaming headsets"],["chairs","Gaming chairs"],["vr","VR"],["pcacc","Desk & PC accessories"]]},
+  ["keyboards","Keyboards"],["mice","Mice"],["printers","Printers & ink"],["network","Routers & Wi-Fi"],["pcacc","Desk & PC accessories"]]},
+ {id:"gaming",name:"Gaming",c:"#ff5ad1",icon:"controllers",subs:[
+  ["consoles","Consoles"],["games","Games"],["controllers","Controllers & wheels"],["gheadsets","Gaming headsets"],["chairs","Gaming chairs"],["vr","VR"]]},
  {id:"photo",name:"Photo & Video",c:"#ffcf3a",icon:"cameras",subs:[
-  ["cameras","Cameras"],["actioncams","360 & action cameras"],["gimbals","Gimbals"],["audio","Microphones & podcast"],
-  ["webcams","Webcams"],["calibration","Screen calibration"],["printing","Printers & photo paper"],["bags","Bags & tripods"]]},
- {id:"home",name:"Home & Appliances",c:"#4be3a0",icon:"robovac",subs:[
-  ["robovac","Robot vacuums"],["laundry","Laundry & ironing"],["smarthome","Smart home & climate"],["lighting","Lanterns & decor"]]},
+  ["cameras","Cameras & lenses"],["actioncams","360 & action cameras"],["drones","Drones"],["gimbals","Gimbals"],["audio","Microphones & podcast"],
+  ["webcams","Webcams"],["calibration","Screen calibration"],["printing","Photo paper"],["bags","Bags & tripods"]]},
+ {id:"appliances",name:"Appliances",c:"#7ad7ff",icon:"washers",subs:[
+  ["washers","Washers & dryers"],["fridges","Fridges & freezers"],["dishwashers","Dishwashers"],["ovens","Ovens, hobs & hoods"]]},
+ {id:"home",name:"Home & Garden",c:"#4be3a0",icon:"robovac",subs:[
+  ["robovac","Robot vacuums"],["vacuums","Vacuums"],["climate","Air & heating"],["smarthome","Smart home"],["security","Security & doorbells"],
+  ["lighting","Lighting & decor"],["laundry","Irons & steamers"],["garden","Garden & grill"]]},
  {id:"kitchen",name:"Kitchen",c:"#ff8a5c",icon:"pots",subs:[
-  ["pans","Frying pans"],["pots","Pots & cast iron"],["knives","Knives"],["boards","Cutting boards"],["ovenware","Ovenware"],
-  ["machines","Kitchen machines & blenders"],["smallapp","Small appliances"],["utensils","Utensils & tools"],["tableware","Tableware & cutlery"],["food","Food & gifts"]]},
- {id:"beauty",name:"Beauty & Health",c:"#ff7ac6",icon:"hair",subs:[["hair","Hair styling"],["wellness","Massage & recovery"]]}
+  ["coffee","Coffee"],["smallapp","Small appliances"],["machines","Mixers & blenders"],["pans","Frying pans"],["pots","Pots & cast iron"],["knives","Knives"],
+  ["boards","Cutting boards"],["ovenware","Ovenware"],["utensils","Utensils & tools"],["tableware","Tableware & cutlery"],["food","Food & gifts"]]},
+ {id:"beauty",name:"Beauty & Health",c:"#ff7ac6",icon:"hair",subs:[
+  ["hair","Hair styling"],["shaving","Shaving & IPL"],["oral","Toothbrushes"],["skincare","Skincare & perfume"],["wellness","Massage & health"]]},
+ {id:"toys",name:"Toys & LEGO",c:"#ffd84d",icon:"lego",subs:[["lego","LEGO"],["toys","Toys & games"]]},
+ {id:"sports",name:"Sports & Outdoor",c:"#5ee0c9",icon:"bikes",subs:[["bikes","E-scooters & bikes"],["fitness","Fitness"],["outdoor","Outdoor"]]},
+ {id:"other",name:"Other",c:"#9a9aa3",icon:"other",subs:[["other","Other"]]}
 ];
 const CAT=Object.fromEntries(CATS.map(c=>[c.id,c]));
-const SUBNAME={};CATS.forEach(c=>c.subs.forEach(([k,n])=>SUBNAME[k]=n));
-
-// updated = date the deals were read from the source (YYYY-MM-DD, Norway time)
-const SRC={
- tek:{name:"Tek.no pick",label:"Tek.no picks",via:"Tested deals from many shops",updated:"2026-11-17",url:"https://www.tek.no/i/wAr0An",note:"Tek.no lists this deal but doesn't name the shop. Use Prisjakt to find who has it cheapest."},
- kitchn:{name:"Kitchn",label:"Kitchn",via:"kitchn.no Black Weeks",updated:"2026-11-17",url:"https://www.kitchn.no/kampanje/blackfriday/"},
- sp:{name:"Scandinavian Photo",label:"Scandinavian Photo",via:"scandinavianphoto.no Black Week",updated:"2026-11-17",url:"https://www.scandinavianphoto.no/kampanjer/black-week"},
- komplett:{name:"Komplett",label:"Komplett",via:"via Gamerguide.no deal list",updated:"2026-11-17",url:"https://www.komplett.no/kampanje/black-friday"},
- greencom:{name:"Greencom",label:"Greencom",via:"via Gamerguide.no deal list",updated:"2026-11-17",url:"https://www.gamerguide.no/nyhet/black-friday-gaming-deals-2024-de-beste-tilbudene-p%C3%A5-gaming-pc-og-gamingutstyr"},
- telenor:{name:"Telenor",label:"Telenor",via:"telenor.no Black Week",updated:"2026-11-17",url:"https://www.telenor.no/black-week/"}
-};
-
-// [name, brand, source, now, before, category, sub, ref (f=shop's official before-price, l=launch/test/guide price), flag]
-const RAW=[
-// ---- Tek.no picks
-["Roborock Saros 20 Sonic","Roborock","tek",7490,16000,"home","robovac","l","rec"],
-["Dreame X50 Ultra","Dreame","tek",5990,15990,"home","robovac","l"],
-["LG G6 65\" OLED TV (2026)","LG","tek",22990,40000,"electronics","tv","l"],
-["Sonos Ace","Sonos","tek",2399,5500,"electronics","headphones","l"],
-["Sony WH-1000XM6","Sony","tek",3690,5490,"electronics","headphones","l"],
-["CMF Headphone Pro","CMF by Nothing","tek",790,1390,"electronics","headphones","l"],
-["Anker Soundcore Space 2","Anker","tek",1190,1790,"electronics","headphones","l"],
-["CMF Buds 2","CMF by Nothing","tek",390,690,"electronics","earbuds","l"],
-["Anker Soundcore Sport X20","Anker","tek",790,1190,"electronics","earbuds","l"],
-["Anker Soundcore Liberty 5 Pro","Anker","tek",1790,2190,"electronics","earbuds","l"],
-["Bose SoundLink Max","Bose","tek",2790,5000,"electronics","speakers","l"],
-["Bose SoundLink Flex (2nd gen)","Bose","tek",1190,1890,"electronics","speakers","l"],
-["Sonos Move 2","Sonos","tek",3990,5000,"electronics","speakers","l"],
-["Samsung HW-Q995H soundbar","Samsung","tek",9995,15995,"electronics","soundbars","l"],
-["Sennheiser Ambeo Mini","Sennheiser","tek",5990,9490,"electronics","soundbars","l"],
-["Sonos Sub Mini","Sonos","tek",3990,5000,"electronics","soundbars","l"],
-["Sonos Arc Ultra","Sonos","tek",8490,9990,"electronics","soundbars","l"],
-["Oppo Find X9 Pro 16/512GB","Oppo","tek",9990,15990,"electronics","phones","l"],
-["Google Pixel 11 Pro XL","Google","tek",11490,16490,"electronics","phones","l"],
-["Samsung Galaxy Tab S11","Samsung","tek",6990,10990,"electronics","tablets","l"],
-["Huawei Watch Fit 4 Pro","Huawei","tek",1590,2990,"electronics","tablets","l"],
-["Anker Nano Power Bank 30W","Anker","tek",399,699,"electronics","chargers","l"],
-["Sony PlayStation VR2","Sony","tek",3990,6500,"computers","vr","l"],
-["Asus ROG Harpe Ace Extreme","Asus","tek",1699,2500,"computers","mice","l"],
-["Ninja Woodfire Pro Connect XL","Ninja","tek",3999,7000,"kitchen","smallapp","l"],
-["Chef Matteo Duoheat II airfryer","Chef Matteo","tek",998,1500,"kitchen","smallapp","l"],
-["Bosch Serie 6 MUMS6ZS00","Bosch","tek",4999,8000,"kitchen","machines","l"],
-["Kenwood Cooking Chef XL KCL95","Kenwood","tek",9999,15000,"kitchen","machines","l"],
-["Ankarsrum Assistent AKM6230","Ankarsrum","tek",5990,8000,"kitchen","machines","l"],
-["Sensibo Air","Sensibo","tek",849,1700,"home","smarthome","l"],
-["Electrolux EW82U2DB","Electrolux","tek",4499,6000,"home","laundry","l"],
-["Tefal Puregliss steam iron","Tefal","tek",899,1400,"home","laundry","l"],
-["Dyson Airwrap i.d.","Dyson","tek",4599,6190,"beauty","hair","l"],
-["Flowpression Boots Pro+","Flowpression","tek",4990,7000,"beauty","wellness","l"],
-// ---- Telenor
-["Samsung Galaxy SmartTag2","Samsung","telenor",159,449,"electronics","phoneacc","f"],
-["iDeal of Sweden MagSafe Wallet+ (iPhone 18 Pro/17 Pro)","iDeal of Sweden","telenor",300,499,"electronics","phoneacc","f"],
-["iDeal of Sweden Swirl case (iPhone 18 Pro Max/17 Pro Max)","iDeal of Sweden","telenor",240,399,"electronics","phoneacc","f"],
-["Sudio A3 wireless earbuds","Sudio","telenor",199,399,"electronics","earbuds","f"],
-["Sudio M1 Pro speaker","Sudio","telenor",499,999,"electronics","speakers","f"],
-["Anker 140W charger, 4 ports","Anker","telenor",699,999,"electronics","chargers","f"],
-["Anker 45W charger with display","Anker","telenor",399,499,"electronics","chargers","f"],
-// ---- Scandinavian Photo
-["JBL Tour One M3 (Aviator Blue / Latte)","JBL","sp",2290,4490,"electronics","headphones","f"],
-["JBL Tour One M3 (Black / Blue)","JBL","sp",1790,2800,"electronics","headphones","f"],
-["JBL Live 780NC","JBL","sp",1290,1990,"electronics","headphones","f"],
-["Nothing Headphone (a)","Nothing","sp",1390,2190,"electronics","headphones","f"],
-["Sennheiser HD 650","Sennheiser","sp",2790,3490,"electronics","headphones","f"],
-["Sennheiser HD 600","Sennheiser","sp",2790,3490,"electronics","headphones","f"],
-["Nothing Ear (3)","Nothing","sp",1290,1890,"electronics","earbuds","f"],
-["JBL PartyBox Ultimate","JBL","sp",9990,16990,"electronics","speakers","f"],
-["JBL PartyBox 720 + PartyCover","JBL","sp",7490,12990,"electronics","speakers","f"],
-["JBL PartyBox Encore Essential 2 + PartyCover","JBL","sp",2290,4190,"electronics","speakers","f"],
-["JBL PartyBox Ultimate + lights + cover bundle","JBL","sp",13990,21690,"electronics","speakers","f"],
-["JBL PartyBox 720 + lights + cover bundle","JBL","sp",10990,15090,"electronics","speakers","f"],
-["JBL Clip 5","JBL","sp",449,749,"electronics","speakers","f"],
-["AlphaTheta DDJ-FLX2 + bag","AlphaTheta","sp",2290,2590,"electronics","music","f"],
-["Hyper USB-C 240W silicone cable 2m","Hyper","sp",199,309,"electronics","chargers","f"],
-["Hyper HyperDrive Next 11-port USB-C hub","Hyper","sp",999,1379,"electronics","chargers","f"],
-["Hyper HyperDrive USB4 cable 1.2m","Hyper","sp",249,329,"electronics","chargers","f"],
-["Lofree Flow 2 84 (Black, Pulse Tactile)","Lofree","sp",1290,2090,"computers","keyboards","f"],
-["Lofree Flow 2 84 (White, Silent Linear)","Lofree","sp",1290,1990,"computers","keyboards","f"],
-["Lofree Flow 2 100 (White, Surfer Linear)","Lofree","sp",1390,2290,"computers","keyboards","f"],
-["Lofree Flow 2 100 (Black, Pulse Tactile)","Lofree","sp",1390,2190,"computers","keyboards","f"],
-["Lofree Flow Lite 84","Lofree","sp",799,1090,"computers","keyboards","f"],
-["Lofree Flow Lite 100","Lofree","sp",899,1290,"computers","keyboards","f"],
-["Hyper HyperSpace Next Bluetooth keyboard","Hyper","sp",499,529,"computers","keyboards","f"],
-["ASUS Zenbook S 14 OLED (Core Ultra 7, 32GB, 1TB)","Asus","sp",17990,21990,"computers","laptops","f"],
-["ASUS Zenbook 14 OLED (Ryzen AI 5, 16GB, 512GB)","Asus","sp",10990,12990,"computers","laptops","f"],
-["ASUS Vivobook S 16 OLED (Ryzen AI 7, 32GB, 1TB)","Asus","sp",14490,15990,"computers","laptops","f"],
-["BenQ SW272U 27\" 4K photo monitor","BenQ","sp",11490,13890,"computers","monitors","f"],
-["ASUS ProArt PA279CRV 27\" 4K","Asus","sp",4490,4990,"computers","monitors","f"],
-["ASUS ProArt PA329CRV 32\" 4K","Asus","sp",5990,7390,"computers","monitors","f"],
-["ASUS ProArt OLED PA32UCDM + calibration sensor","Asus","sp",14990,17990,"computers","monitors","f"],
-["Wacom One 14 pen display","Wacom","sp",2690,3290,"computers","pcacc","f"],
-["Canon EOS R5 + RF 24-105mm f/4L","Canon","sp",36990,41990,"photo","cameras","f"],
-["Insta360 X5 Essentials Bundle","Insta360","sp",5990,6790,"photo","actioncams","f"],
-["Insta360 X6 Essentials Bundle","Insta360","sp",8190,8990,"photo","actioncams","f"],
-["Insta360 Luna Ultra Creator Bundle","Insta360","sp",9249,10699,"photo","actioncams","f"],
-["DJI Osmo Action 4 Standard Combo","DJI","sp",2449,2890,"photo","actioncams","f"],
-["DJI RS 4","DJI","sp",4490,5890,"photo","gimbals","f"],
-["DJI Osmo Mobile 7P","DJI","sp",1090,1299,"photo","gimbals","f"],
-["Røde Rodecaster Pro II Podcast Kit","Røde","sp",14990,18790,"photo","audio","f"],
-["Sennheiser Profile USB mic streaming set","Sennheiser","sp",1490,2119,"photo","audio","f"],
-["Insta360 Link 2C Pro webcam","Insta360","sp",2090,2789,"photo","webcams","f"],
-["Datacolor Spyder","Datacolor","sp",1490,1990,"photo","calibration","f"],
-["Datacolor Spyder Pro","Datacolor","sp",2490,2990,"photo","calibration","f"],
-["Calibrite Display Pro HL","Calibrite","sp",2490,3490,"photo","calibration","f"],
-["Epson EcoTank ET-2876","Epson","sp",1990,2490,"photo","printing","f"],
-["Hahnemühle PhotoRag A2 308g, 25 sheets","Hahnemühle","sp",1990,2490,"photo","printing","f"],
-["Hahnemühle PhotoRag A3 308g, 25 sheets","Hahnemühle","sp",1119,1390,"photo","printing","f"],
-["Ulanzi BP09 camera backpack 22L","Ulanzi","sp",990,1390,"photo","bags","f"],
-["Benro BK70 selfie stick & tripod","Benro","sp",399,599,"photo","bags","f"],
-// ---- Komplett
-["MSI Modern 14S OLED + Premium Pack","MSI","komplett",9990,19990,"computers","laptops","f"],
-["Acer Aspire Lite 15 AL15-32","Acer","komplett",2990,5990,"computers","laptops","f"],
-["Lenovo LOQ 15.3\" 165Hz gaming laptop","Lenovo","komplett",15990,20990,"computers","laptops","f"],
-["Komplett-PC Core Gaming i30","Komplett","komplett",13499,16999,"computers","desktops","f"],
-["Komplett-PC Core Gaming a90","Komplett","komplett",16999,20999,"computers","desktops","f"],
-["Komplett-PC Epic Gaming a276 RGB","Komplett","komplett",25999,31999,"computers","desktops","f"],
-["Acer Revo RB102 mini PC","Acer","komplett",5490,6990,"computers","desktops","f"],
-["AMD Ryzen 7 9800X3D","AMD","komplett",4290,4489,"computers","cpu","f"],
-["AMD Ryzen 7 7800X3D","AMD","komplett",3389,3489,"computers","cpu","f"],
-["AMD Ryzen 5 9600X","AMD","komplett",1890,1989,"computers","cpu","f"],
-["ASUS TUF Gaming B850-PLUS WiFi","Asus","komplett",1679,2090,"computers","motherboards","f"],
-["ASUS Prime B860-PLUS WiFi","Asus","komplett",1799,1999,"computers","motherboards","f"],
-["ASUS TUF Gaming Z790-PLUS WiFi","Asus","komplett",2790,2937,"computers","motherboards","f"],
-["Kingston FURY Beast RGB DDR5 16GB 6000MHz","Kingston","komplett",3790,4299,"computers","ram","f"],
-["Kingston NV3 1TB SSD","Kingston","komplett",1599,2199,"computers","storage","f"],
-["Kingston NV3 2TB SSD","Kingston","komplett",2990,3890,"computers","storage","f"],
-["Toshiba Canvio Ready 2TB external HDD","Toshiba","komplett",1399,1505,"computers","storage","f"],
-["Phanteks AMP GH 750W Gold","Phanteks","komplett",749,1183,"computers","psu","f"],
-["Asus TUF Gaming 1000W Gold EVO","Asus","komplett",1099,1649,"computers","psu","f"],
-["Asus TUF Gaming 850W Gold EVO","Asus","komplett",999,1430,"computers","psu","f"],
-["Phanteks Eclipse G370A","Phanteks","komplett",489,649,"computers","cases","f"],
-["Phanteks XT View Matrix (white)","Phanteks","komplett",1049,1390,"computers","cases","f"],
-["Fractal North Charcoal Black TG","Fractal Design","komplett",1179,1299,"computers","cases","f"],
-["Corsair FRAME 4000D ARGB","Corsair","komplett",799,899,"computers","cases","f"],
-["Phanteks Glacier One 240S25 SE AIO","Phanteks","komplett",499,749,"computers","cooling","f"],
-["Cooler Master MasterLiquid Core Nex 360 ARGB","Cooler Master","komplett",899,1075,"computers","cooling","f"],
-["Cooler Master Hyper 212","Cooler Master","komplett",199,226,"computers","cooling","f"],
-["Corsair RS120 ARGB fan (white)","Corsair","komplett",149,199,"computers","cooling","f"],
-["Logitech G502 HERO","Logitech","komplett",399,599,"computers","mice","f"],
-["SteelSeries Arctis Nova Elite wireless","SteelSeries","komplett",4999,7795,"computers","gheadsets","f"],
-["SteelSeries Arctis Nova 5 wireless","SteelSeries","komplett",999,1199,"computers","gheadsets","f"],
-["Svive Gemini gaming chair","Svive","komplett",2490,2990,"computers","chairs","f"],
-["Mission SG 75W air duster/blower","Mission SG","komplett",399,999,"computers","pcacc","f"],
-["Iiglo MDM5722 gas-spring monitor arm","Iiglo","komplett",699,990,"computers","pcacc","f"],
-["iPhone 18 Pro 256GB","Apple","komplett",14490,15990,"electronics","phones","f"],
-["iPhone 18 Pro Max 256GB","Apple","komplett",16990,17990,"electronics","phones","f"],
-// ---- Greencom
-["Galactic Z1 24\" curved 200Hz","Galactic","greencom",1499,2999,"computers","monitors","f"],
-["Galactic X2 27\" QHD 180Hz","Galactic","greencom",2299,3499,"computers","monitors","f"],
-["Galactic 34\" curved UWQHD 180Hz","Galactic","greencom",3499,4999,"computers","monitors","f"],
-["GUNGNIR Omega gaming chair","Gungnir","greencom",2999,4999,"computers","chairs","f"],
-["Aorus Z260CR gaming PC package","Aorus","greencom",13999,16499,"computers","desktops","f"],
-// ---- Kitchn
-["Woll ECO Logic QXR sauté pan 28cm","Woll","kitchn",951,3169,"kitchen","pans","f"],
-["Woll ECO Logic QXR frying pan 28cm","Woll","kitchn",825,2749,"kitchen","pans","f"],
-["Eva Trio Multi Mosaic ceramic pan 28cm","Eva Trio","kitchn",720,1799,"kitchen","pans","f"],
-["Jamie Oliver by Tefal Enjoy pan 28cm","Tefal","kitchn",540,1199,"kitchen","pans","f"],
-["Jamie Oliver by Tefal Cook Smart pan 28cm","Tefal","kitchn",517,1149,"kitchen","pans","f"],
-["WMF Provence Plus pot set, 4 pcs","WMF","kitchn",1360,3399,"kitchen","pots","f"],
-["Sabor cast-iron pot 6.7L dark green","Sabor","kitchn",1196,2990,"kitchen","pots","f"],
-["Sabor cast-iron pot 24cm 4.4L dark green","Sabor","kitchn",1036,2590,"kitchen","pots","f"],
-["Sabor cast-iron pot 4.4L (forever olive / mahogany)","Sabor","kitchn",1295,2590,"kitchen","pots","f"],
-["Modern House Black Copper pot w/ steamer 18L","Modern House","kitchn",880,2199,"kitchen","pots","f"],
-["Modern House Steel pot set, 9 pcs","Modern House","kitchn",1450,2899,"kitchen","pots","f","club"],
-["Global Ukon knife set, 3 pcs","Global","kitchn",1639,4097,"kitchen","knives","f"],
-["Tramontina Wooden Board cutting boards, 2 pcs teak","Tramontina","kitchn",409,1390,"kitchen","boards","f"],
-["Tramontina end-grain cutting board 45x34 teak","Tramontina","kitchn",697,1990,"kitchen","boards","f"],
-["Sabor Moi cutting board 55x38 acacia","Sabor","kitchn",599,1599,"kitchen","boards","f"],
-["Modern House cutting board set, 2 pcs beech","Modern House","kitchn",279,699,"kitchen","boards","f"],
-["Joseph Joseph Nest Boards, 3 pcs","Joseph Joseph","kitchn",799,1599,"kitchen","boards","f"],
-["Aida Raw end-grain board 55x35 teak","Aida","kitchn",699,1399,"kitchen","boards","f"],
-["Aida cutting board w/ juice groove 40x26 acacia","Aida","kitchn",275,549,"kitchen","boards","f"],
-["Sabor Trevig cutting boards, 2 pcs accoya","Sabor","kitchn",449,899,"kitchen","boards","f"],
-["Eva Trio Legio Nova ovenproof dishes, 3 pcs","Eva Trio","kitchn",799,1999,"kitchen","ovenware","f"],
-["Pillivuyt Originale ovenproof dishes, 3 pcs","Pillivuyt","kitchn",699,1799,"kitchen","ovenware","f"],
-["Rosendahl Grand Cru ovenproof dishes, 3 pcs","Rosendahl","kitchn",419,1049,"kitchen","ovenware","f"],
-["Rosendahl Grand Cru ovenproof dish 24x24","Rosendahl","kitchn",139,349,"kitchen","ovenware","f"],
-["Anders Petter Classic oval dish 37x25","Anders Petter","kitchn",159,399,"kitchen","ovenware","f"],
-["Modern House Black Elegant ovenproof dish","Modern House","kitchn",839,1399,"kitchen","ovenware","f"],
-["Rösle pizza stone 30cm","Rösle","kitchn",299,499,"kitchen","ovenware","f"],
-["Sabor Ultimate kitchen machine 6.5L 1800W","Sabor","kitchn",2850,5699,"kitchen","machines","f"],
-["Sabor Ultimate blender 1500W","Sabor","kitchn",1000,1999,"kitchen","machines","f","club"],
-["OBH Nordica Elite Mix hand blender 800W","OBH Nordica","kitchn",439,799,"kitchen","machines","f"],
-["Sabor Select sandwich grill","Sabor","kitchn",300,999,"kitchen","smallapp","f"],
-["AdHoc i.Mill electric spice grinder","AdHoc","kitchn",450,899,"kitchen","smallapp","f"],
-["Sabor Ultimate kitchen scale, two zones","Sabor","kitchn",299,599,"kitchen","smallapp","f"],
-["Modern House mandoline slicer","Modern House","kitchn",258,849,"kitchen","utensils","f"],
-["Modern House Kitchen Things utensil set, acacia","Modern House","kitchn",199,599,"kitchen","utensils","f"],
-["Eva Solo Nordic Kitchen utensil set, bamboo","Eva Solo","kitchn",363,727,"kitchen","utensils","f"],
-["Gefu Scala digital meat thermometer","Gefu","kitchn",249,499,"kitchen","utensils","f"],
-["Aida Raw grinder set with board, 3 pcs","Aida","kitchn",450,899,"kitchen","utensils","f"],
-["Tramontina BBQ cutlery, 12 pcs","Tramontina","kitchn",556,1390,"kitchen","utensils","f"],
-["Rösle salad spinner 5.4L","Rösle","kitchn",839,1399,"kitchen","utensils","f"],
-["Rösle vegetable mill 22cm","Rösle","kitchn",1079,1799,"kitchen","utensils","f"],
-["Rösle gas burner (crème brûlée torch)","Rösle","kitchn",579,969,"kitchen","utensils","f"],
-["Rösle digital meat thermometer","Rösle","kitchn",479,799,"kitchen","utensils","f"],
-["Aarke French press 1L","Aarke","kitchn",1119,1399,"kitchen","utensils","f"],
-["Ooni flat pizza peel 66cm aluminium","Ooni","kitchn",399,549,"kitchen","utensils","f"],
-["Modern House cutlery set, 16 pcs oak","Modern House","kitchn",480,1199,"kitchen","tableware","f"],
-["Wik & Walsøe Julemorgen plate 20cm","Wik & Walsøe","kitchn",250,499,"kitchen","tableware","f"],
-["Royal Copenhagen Star Fluted Christmas plate 27cm","Royal Copenhagen","kitchn",674,899,"kitchen","tableware","f"],
-["Modern House Daily Use ramekin 20cl","Modern House","kitchn",24,79,"kitchen","tableware","f"],
-["Modern House bAYk mixing bowls, 3 pcs","Modern House","kitchn",575,959,"kitchen","tableware","f","club"],
-["Cemo Gourmet triple truffle, 3 pcs","Cemo","kitchn",90,299,"kitchen","food","f"],
-["Cemo gift box coffee, chocolate & licorice","Cemo","kitchn",140,349,"kitchen","food","f"],
-["Cemo theme bag: pizza oil, spice, tapenade, balsamic","Cemo","kitchn",192,479,"kitchen","food","f"],
-["Magnor Skyline storm lantern 15cm blue","Magnor","kitchn",269,909,"home","lighting","f"]
-];
-// ---------- real store photos + direct product links ----------
-const SPI="https://www.scandinavianphoto.no/globalassets/", SPU="https://www.scandinavianphoto.no/";
-const KI="https://content.kitchn.no/media/";
-const KOMPLETT={"MSI Modern 14S OLED + Premium Pack":1346299,"Acer Aspire Lite 15 AL15-32":1339035,"Lenovo LOQ 15.3\" 165Hz gaming laptop":1339036,
- "Komplett-PC Core Gaming i30":1331856,"Komplett-PC Core Gaming a90":1324673,"Komplett-PC Epic Gaming a276 RGB":1335386,"Acer Revo RB102 mini PC":1341061,
- "AMD Ryzen 7 9800X3D":1315831,"AMD Ryzen 7 7800X3D":1224892,"AMD Ryzen 5 9600X":1309692,"ASUS TUF Gaming B850-PLUS WiFi":1317729,
- "ASUS Prime B860-PLUS WiFi":1317713,"ASUS TUF Gaming Z790-PLUS WiFi":1222960,"Kingston FURY Beast RGB DDR5 16GB 6000MHz":1334701,
- "Kingston NV3 1TB SSD":1311274,"Kingston NV3 2TB SSD":1311276,"Toshiba Canvio Ready 2TB external HDD":1333078,"Phanteks AMP GH 750W Gold":1310225,
- "Asus TUF Gaming 1000W Gold EVO":1340929,"Asus TUF Gaming 850W Gold EVO":1334095,"Phanteks Eclipse G370A":1323741,"Phanteks XT View Matrix (white)":1328529,
- "Fractal North Charcoal Black TG":1221886,"Corsair FRAME 4000D ARGB":1315890,"Phanteks Glacier One 240S25 SE AIO":1339372,
- "Cooler Master MasterLiquid Core Nex 360 ARGB":1342629,"Cooler Master Hyper 212":1302785,"Corsair RS120 ARGB fan (white)":1310383,
- "Logitech G502 HERO":1097889,"SteelSeries Arctis Nova Elite wireless":1328213,"SteelSeries Arctis Nova 5 wireless":1306945,
- "Svive Gemini gaming chair":1152278,"Mission SG 75W air duster/blower":1318215,"Iiglo MDM5722 gas-spring monitor arm":1306961,
- "iPhone 18 Pro 256GB":1343855,"iPhone 18 Pro Max 256GB":1343856};
-const MEDIA={
- // Scandinavian Photo: [photo file, product page]
- "JBL Tour One M3 (Aviator Blue / Latte)":[SPI+"1105526_tour-one-m3-aviator-blue_01.jpg?ref=FA35B41436",SPU+"jbl/tour-one-m3-aviator-blue-23"],
- "JBL Tour One M3 (Black / Blue)":[SPI+"1105528_tour-one-m3-black_01.jpg?ref=E13F1DC64D",SPU+"jbl/tour-one-m3-black-6"],
- "JBL Live 780NC":[SPI+"1106070_live-780nc-black_01.jpg?ref=06FB7A68B7",SPU+"jbl/live-780nc-black-1106070"],
- "Nothing Headphone (a)":[SPI+"1105869_headphone-a---black_06.jpg?ref=8EE07BA164",SPU+"nothing/headphone-a---black-1105869"],
- "Sennheiser HD 650":[SPI+"hd_650_product_shot_cutout_isofront_02.jpg?ref=80D03B23A8",SPU+"sennheiser/hd-650-1051311"],
- "Sennheiser HD 600":[SPI+"1048911_sennheiser-hd-600_headphones-hero.jpg?ref=914D3EFFE5",SPU+"sennheiser/hd-600-1048911"],
- "Nothing Ear (3)":[SPI+"1105866_ear-3---white_07.jpg?ref=42D56584EF",SPU+"nothing/ear-3---white-1105866"],
- "JBL PartyBox Ultimate":[SPI+"1105691_-jbl-partybox-ultimate_01.jpg?ref=5A0F125604",SPU+"jbl/partybox-ultimate-1105691"],
- "JBL PartyBox 720 + PartyCover":[SPI+"1106399_partybox-720--partycover.jpg?ref=E151702112",SPU+"jbl/partybox-720--partycover-1106399"],
- "JBL PartyBox Encore Essential 2 + PartyCover":[SPI+"1106396_partybox-encore-essential-2--partycover_01.jpg?ref=A7C6933888",SPU+"jbl/partybox-encore-essential-2--partycover-1106396"],
- "JBL PartyBox Ultimate + lights + cover bundle":[SPI+"1106404_partybox-ultimate--2x-partylight-stick--partylight-beam--partycover.jpg?ref=8F4E02C121",SPU+"jbl/partybox-ultimate--2x-partylight-stick--partylight-beam--partycover-1106404"],
- "JBL PartyBox 720 + lights + cover bundle":[SPI+"1106403_partybox-720--2x-partylight-stick--partylight-beam--partycover.jpg?ref=7DB53BD992",SPU+"jbl/partybox-720--2x-partylight-stick--partylight-beam--partycover-1106403"],
- "JBL Clip 5":[SPI+"jblclip5blk-jbl_clip_5_hero_black.jpg?ref=49CC836777",SPU+"jbl/clip-5-black-6"],
- "AlphaTheta DDJ-FLX2 + bag":[SPI+"1107574_ddj-flx2--djc-flx2-bag.jpg?ref=B4929EA494",SPU+"alphatheta/ddj-flx2--djc-flx2-bag-1107574"],
- "Hyper USB-C 240W silicone cable 2m":["",SPU+"hyper/usb-c-240w-silicone-cable-2m-white-1100818"],
- "Hyper HyperDrive Next 11-port USB-C hub":[SPI+"1061730-hyper-hyperdrive-next-11-ports-01.jpg?ref=6CC3EC31B9",SPU+"hyper/hyperdrive-next-11-port-usb-c-hub-1061730"],
- "Hyper HyperDrive USB4 cable 1.2m":[SPI+"1102427.jpg?ref=8B50B46642",SPU+"hyper/hyperdrive-usb4-performance-cable-12m-1102427"],
- "Lofree Flow 2 84 (Black, Pulse Tactile)":[SPI+"1105883_lowfree_flow_2_84_black_kailh_pulse_tactile_6.jpg?ref=99BA1B4DD4",SPU+"lofree/flow-2-84-black-kailh-pulse-tactile--nordic-1105883"],
- "Lofree Flow 2 84 (White, Silent Linear)":[SPI+"1105884_lofree_flow_2_84_white_kailh_void_silent_linear.jpg?ref=F58856A42C",SPU+"lofree/flow-2-84-white-kailh-void-silent-linear--nordic-1105884"],
- "Lofree Flow 2 100 (White, Surfer Linear)":[SPI+"1105888_lofree_flow_2_100_white_kailh_surfer_linear.jpg?ref=2AC0AD4E21",SPU+"lofree/flow-2-100-white-kailh-surfer-linear--nordic-1105888"],
- "Lofree Flow 2 100 (Black, Pulse Tactile)":[SPI+"1105886_lowfee_flow_2_100_black_kailh_pulse_tactile_2.jpg?ref=86A7953840",SPU+"lofree/flow-2-100-black-kailh-pulse-tactile--nordic-1105886"],
- "Lofree Flow Lite 84":[SPI+"1104671_flow_lite_84_marble_grey.jpg?ref=216E7AC8E0",SPU+"lofree/flow-lite-84-marble-grey-1104671"],
- "Lofree Flow Lite 100":[SPI+"1104673__flow_lite_100_marble_grey_5.jpg?ref=3254147254",SPU+"lofree/flow-lite-100-marble-grey-1104673"],
- "Hyper HyperSpace Next Bluetooth keyboard":[SPI+"1102430.jpg?ref=46FDBBAE46",SPU+"hyper/hyperspace-next-bluetooth-wireless-keyboard-1102430"],
- "ASUS Zenbook S 14 OLED (Core Ultra 7, 32GB, 1TB)":[SPI+"1107568_zenbooks_1_-oled_ux5406sa_oled_2400x2400.jpg?ref=500D92293D",SPU+"asus/zenbook-s-14-oled--intel-core-ultra-7-258v-32gb-ram-1tb-ssd-win-11-1107568"],
- "ASUS Zenbook 14 OLED (Ryzen AI 5, 16GB, 512GB)":[SPI+"1107569_asus_zenbook_14_oled.jpg?ref=E1272AB59A",SPU+"asus/zenbook-14-oled--ryzen-ai-5-430-16gb-ram-512gb-ssd-win-11-1107569"],
- "ASUS Vivobook S 16 OLED (Ryzen AI 7, 32GB, 1TB)":[SPI+"1106433_vivobooks_1.jpg?ref=A4CA17911B",SPU+"asus/vivobook-s-16-oled--amd-ryzen-ai-7-445-32gb-ram-1tb-ssd-win-11-pro-1106433"],
- "BenQ SW272U 27\" 4K photo monitor":[SPI+"1060049_sw272q_9.jpg?ref=D4D553F691",SPU+"benq/sw272u-1060050"],
- "ASUS ProArt PA279CRV 27\" 4K":[SPI+"1059529_pa279crv_9.jpg?ref=7F365F9031",SPU+"asus/proart-pa279crv-1059529"],
- "ASUS ProArt PA329CRV 32\" 4K":[SPI+"1061074_pa329crv_1.jpg?ref=C11FF10085",SPU+"asus/proart-pa329crv-1061074"],
- "ASUS ProArt OLED PA32UCDM + calibration sensor":[SPI+"1102618_pack.jpg?ref=AA4F40E493",SPU+"asus/proart-oled-pa32ucdm-with-calibration-sensor-1102647"],
- "Wacom One 14 pen display":[SPI+"1104085_9.jpg?ref=6ECB44FD1D",SPU+"wacom/one-14-1104085"],
- "Canon EOS R5 + RF 24-105mm f/4L":[SPI+"1057690.jpg?ref=2BEC472AEF",SPU+"canon/eos-r5--rf-24-105mm-f4l-is-usm-1057690"],
- "Insta360 X5 Essentials Bundle":[SPI+"1102924_insta360_x5.jpg?ref=9704801BE9",SPU+"insta360/x5-essentials-bundle-1102924"],
- "Insta360 X6 Essentials Bundle":[SPI+"1106574-insta360_x6-essentials-bundle.jpg?ref=DBF0977FD5",SPU+"insta360/x6-essentials-bundle-arctic-white-essentials-bundle-arctic-white"],
- "Insta360 Luna Ultra Creator Bundle":[SPI+"1106244-insta360-luna-ultra-creator-bundle-black-main.jpg?ref=AC6BF09B56",SPU+"insta360/luna-ultra-creator-bundle-cosmic-black-1106244"],
- "DJI Osmo Action 4 Standard Combo":[SPI+"1060272_dji_osmo_action_4_1.jpg?ref=76E97A095F",SPU+"dji/osmo-action-4-standard-combo-1060272"],
- "DJI RS 4":[SPI+"1100488_dji_rs_4.jpg?ref=9722AA53A4",SPU+"dji/rs-4-1100488"],
- "DJI Osmo Mobile 7P":[SPI+"1102546_dji_osmo_mobile_7p.jpg?ref=B6E0F81FBB",SPU+"dji/osmo-mobile-7p-1102546"],
- "Røde Rodecaster Pro II Podcast Kit":[SPI+"1101331_rode-rodecaster-pro-ii-podcast-kit-4_new_at2040.jpg?ref=E109DA49E2",SPU+"rode/rodecaster-pro-ii-podcast-kit-4-1101331"],
- "Sennheiser Profile USB mic streaming set":[SPI+"1058938_sennheiser_profile_usb_1.1.jpg?ref=11963C270F",SPU+"sennheiser/profile-streaming-set-usb-mic-1058938"],
- "Insta360 Link 2C Pro webcam":[SPI+"1105014_insta360_link-2c-pro-graphite-black_04.jpg?ref=F7B7E977B0",SPU+"insta360/link-2c-pro-graphite-black-1105014"],
- "Datacolor Spyder":[SPI+"001_dc_product_hero_top_300dpi.jpg?ref=366DB7A930",SPU+"datacolor/spyder-1101718"],
- "Datacolor Spyder Pro":[SPI+"1101719_spyder_pro.jpg?ref=3A4519FBD9",SPU+"datacolor/spyder-pro-1101719"],
- "Calibrite Display Pro HL":[SPI+"1060086_ccdis3hl_calibrite_display_pro_hl_1.jpg?ref=0CC72A39BE",SPU+"calibrite/display-pro-hl-1060086"],
- "Epson EcoTank ET-2876":[SPI+"1102797.jpg?ref=BB1869A645",SPU+"epson/ecotank-et-2876-1102797"],
- "Hahnemühle PhotoRag A2 308g, 25 sheets":[SPI+"hahnemuehle_photo_rag.png?ref=EFBEB41221",SPU+"hahnemuhle/fotopapir-a2-photorag-308g-25-blad-a2"],
- "Hahnemühle PhotoRag A3 308g, 25 sheets":[SPI+"hahnemuehle_photo_rag.png?ref=EFBEB41221",SPU+"hahnemuhle/photorag-a3-308g-25--ark-a3"],
- "Ulanzi BP09 camera backpack 22L":[SPI+"1100273_ulanzi_bbp09_backpack_01.jpg?ref=3B81278FDF",SPU+"ulanzi/bp09-camera-backpack-22l-1100273"],
- "Benro BK70 selfie stick & tripod":[SPI+"1104727-benro-bk70-smart-selfie-stick-mobile-tripod.jpg?ref=D8981FC760",SPU+"benro/bk70-smart-selfie-stick-and-tripod-1104727"],
- "GUNGNIR Omega gaming chair":["","https://greencom.no/produkt/gaming-og-pc-tilbehor/gamingstoler/gungnir-omega-gamingstol-g-soft-fabric"],
- // Kitchn: [photo file]
- "Woll ECO Logic QXR sauté pan 28cm":[KI+"59acf87e-4a5b-41a3-b5fe-7ad731bdc3a8s_300_300.jpg?24051311"],
- "Eva Trio Multi Mosaic ceramic pan 28cm":[KI+"3762858b-7c40-4ef8-a839-96ca1fa8879ds_300_300.jpg?25062311"],
- "Jamie Oliver by Tefal Enjoy pan 28cm":[KI+"3535a5ba-76d0-49af-897e-97d636fc8931s_300_300.jpg?24031215"],
- "WMF Provence Plus pot set, 4 pcs":[KI+"7d31cb45-d786-400f-bba2-f333e5f42bc7s_300_300.jpg?24032112"],
- "Sabor cast-iron pot 6.7L dark green":[KI+"f482d107-1574-4af4-9a1c-b6f0076af81bs_300_300.jpg?25091016"],
- "Sabor cast-iron pot 24cm 4.4L dark green":[KI+"e5196f9a-35cf-4bc1-8d8c-2c6425529bc3s_300_300.jpg?24091712"],
- "Modern House Black Copper pot w/ steamer 18L":[KI+"7dbfe8b1-29db-4325-98db-afa45206d8dbs_300_300.jpg?25050814"],
- "Global Ukon knife set, 3 pcs":[KI+"fd77c51c-8387-41a6-a23f-b0cb5a2aef16s_300_300.jpg?26102311"],
- "Tramontina Wooden Board cutting boards, 2 pcs teak":[KI+"096c13bd-3e9a-48f5-b239-9405a8d55aafs_300_300.jpg?26060309"],
- "Tramontina end-grain cutting board 45x34 teak":[KI+"3ac75686-4f09-4d80-b59e-1f936107dcc9s_300_300.jpg?25080612"],
- "Sabor Moi cutting board 55x38 acacia":[KI+"1699d615-34bd-459e-afa7-b03d04bb4313s_300_300.jpg?23100313"],
- "Modern House cutting board set, 2 pcs beech":[KI+"2b00fe2a-0f1f-4b00-8c57-e16a55240648s_300_300.jpg?25091113"],
- "Joseph Joseph Nest Boards, 3 pcs":[KI+"0007778f-fee5-463a-b0f4-bf2c3d8ccf06s_300_300.jpg?25082113"],
- "Aida Raw end-grain board 55x35 teak":[KI+"0c3be12b-dede-45b6-86d7-37b31ee2dc75s_300_300.jpg?26071011"],
- "Aida cutting board w/ juice groove 40x26 acacia":[KI+"b96c921b-6023-44b1-a5cf-395e2825c0bcs_300_300.jpg?23052708"],
- "Sabor Trevig cutting boards, 2 pcs accoya":[KI+"3ba02ee3-9fcb-4b7f-8835-4ea6b53201b1s_300_300.jpg?26052609"],
- "Eva Trio Legio Nova ovenproof dishes, 3 pcs":[KI+"497dcdc7-24cc-43ee-a4df-a8c9f09fa5ebs_300_300.jpg?25081413"],
- "Pillivuyt Originale ovenproof dishes, 3 pcs":[KI+"0f949fef-3835-4f0b-8f8c-215ab9f73ee1s_300_300.jpg?26050709"],
- "Rosendahl Grand Cru ovenproof dishes, 3 pcs":[KI+"b31d35a8-5ebc-41d1-bb90-5356e4561466s_300_300.jpg?25081915"],
- "Rosendahl Grand Cru ovenproof dish 24x24":[KI+"b9f2a6c2-6b0d-424e-bb8b-f96e45f2ea5bs_300_300.jpg?25081915"],
- "Anders Petter Classic oval dish 37x25":[KI+"8dfcfabb-9854-4f58-a7cc-a8d875c1283fs_300_300.jpg?24082210"],
- "Modern House Black Elegant ovenproof dish":[KI+"32a4ba8a-c11c-4af7-a5a4-6108471b2f4es_300_300.jpg?26092210"],
- "Rösle pizza stone 30cm":[KI+"4e1e7e87-78a1-4c09-a22b-f7a0e68fd6d0s_300_300.jpg?25060407"],
- "Sabor Ultimate kitchen machine 6.5L 1800W":[KI+"df919164-816e-4cf3-9e9d-5528a07ee776s_300_300.jpg?25091114"],
- "OBH Nordica Elite Mix hand blender 800W":[KI+"a4b35cc8-694a-4845-b1c5-df2fc0fdc8c2s_300_300.jpg"],
- "Sabor Select sandwich grill":[KI+"d9e2eb69-86ad-407f-8f32-0b7dbd231caas_300_300.jpg?23092108"],
- "AdHoc i.Mill electric spice grinder":[KI+"966cedac-d976-43d2-a3ae-22f207b647b4s_300_300.jpg?23111109"],
- "Sabor Ultimate kitchen scale, two zones":[KI+"58f44507-1513-4f5d-bb28-7d047771e9a8s_300_300.jpg?25062311"],
- "Modern House mandoline slicer":[KI+"c485b36a-1aa2-489b-9d9b-58861ffc755bs_300_300.jpg?24051507"],
- "Modern House Kitchen Things utensil set, acacia":[KI+"ba724134-72db-404e-83ee-61052b25a918s_300_300.jpg?26082608"],
- "Eva Solo Nordic Kitchen utensil set, bamboo":[KI+"d0b0ebb2-579f-4b5c-8f72-c13a32111165s_300_300.jpg?25070507"],
- "Gefu Scala digital meat thermometer":[KI+"fedbf74c-4aa8-445b-87b0-b8eca0832cf1s_300_300.jpg?23052412"],
- "Aida Raw grinder set with board, 3 pcs":[KI+"adb45222-ed16-4d81-95ac-72b0b3139e79s_300_300.jpg?24032109"],
- "Rösle salad spinner 5.4L":[KI+"dbc7b911-46c7-4f53-ab62-36962cdba571s_300_300.jpg?24080713"],
- "Rösle vegetable mill 22cm":[KI+"0ca59d8b-7a57-40ce-bde6-435848e520d0s_300_300.jpg?26021314"],
- "Rösle gas burner (crème brûlée torch)":[KI+"74f8d35b-5f5a-4d53-ba85-048408990766s_300_300.jpg?26081608"],
- "Rösle digital meat thermometer":[KI+"f0fb84f1-ef0f-4607-a9c5-6b7147def36as_300_300.jpg?25110712"],
- "Aarke French press 1L":[KI+"08f8bb25-1957-4d62-b6e5-203790926105s_300_300.jpg?26050412"],
- "Ooni flat pizza peel 66cm aluminium":[KI+"e89a2191-ad4a-4789-9429-b610acb8522as_300_300.jpg"],
- "Modern House cutlery set, 16 pcs oak":[KI+"cb22f4f5-1d64-4d6e-85d4-2895cf5db2d9s_300_300.jpg?23052510"],
- "Wik & Walsøe Julemorgen plate 20cm":[KI+"c5f720b7-6381-46d0-9106-c7aa5be4ff69s_300_300.jpg"],
- "Cemo Gourmet triple truffle, 3 pcs":[KI+"b17dae43-52d9-473b-9353-45c959060044s_300_300.jpg?26111014"],
- "Cemo gift box coffee, chocolate & licorice":[KI+"fc746efb-f06b-471e-98b3-abd0598d5842s_300_300.jpg?26060209"],
- "Cemo theme bag: pizza oil, spice, tapenade, balsamic":[KI+"9eb0af86-5540-48c1-9314-868bb788b202s_300_300.jpg?26060206"]
-};
-const D=RAW.map(([name,brand,src,now,was,cat,sub,ref,flag],i)=>{
-  const d={id:i,name,brand,src,now,was,cat,sub,ref,flag,shop:SRC[src].name,pct:Math.round((1-now/was)*100),kr:was-now,img:"",url:""};
-  if(KOMPLETT[name]){d.img="https://www.komplett.no/product-media/b2c/en-us/1200/"+KOMPLETT[name]+".jpg";d.url="https://www.komplett.no/product/"+KOMPLETT[name];}
-  if(MEDIA[name]){d.img=MEDIA[name][0]||"";d.url=MEDIA[name][1]||"";}
-  return d;});
-D.forEach(d=>d.score=d.pct*(d.ref==="f"?1:0.85)+(d.flag==="rec"?10:0)+Math.log10(d.kr)*2);
+const SUBNAME={},SUB2CAT={};CATS.forEach(c=>c.subs.forEach(([k,n])=>{SUBNAME[k]=n;SUB2CAT[k]=c.id;}));
+let SRC={}, D=[], GENERATED="";
+async function loadData(){
+  const r=await fetch("data/deals.json",{cache:"no-cache"}); const j=await r.json();
+  SRC=j.sources; GENERATED=j.generated;
+  D=j.deals.map(([name,brand,src,now,was,sub,ref,flag,img,url],i)=>{
+    if(!SUB2CAT[sub])sub="other";
+    return {id:i,name,brand,src,now,was,cat:SUB2CAT[sub],sub,ref,flag,img,url,shop:(SRC[src]||{}).name||src,pct:Math.round((1-now/was)*100),kr:was-now};});
+  D.forEach(d=>d.score=d.pct*(d.ref==="f"?1:0.85)+(d.flag==="rec"?10:0)+Math.log10(Math.max(1,d.kr))*2);
+}
 
 // ---------- state ----------
 const $=id=>document.getElementById(id);
+let LIMIT=60;
 const S={cat:"",subs:new Set(),q:"",min:30,pmin:"",pmax:"",real:false,rec:false,noclub:false,shops:new Set(),brand:"",sort:"best"};
 const nok=n=>n.toLocaleString("nb-NO").replace(/\s/g," ")+" kr";
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -695,7 +417,7 @@ function renderGrid(){
   const avg=L.length?Math.round(L.reduce((a,d)=>a+d.pct,0)/L.length):0;
   $("subtitle").textContent=L.length?`${L.length} deals · average ${avg}% off · up to ${nok(Math.max(...L.map(d=>d.kr)))} saved on one product`:"";
   $("hint").innerHTML=hidden>0?`<div class="hint">${hidden} more deal${hidden>1?"s":""} here ${hidden>1?"are":"is"} below ${S.min}% off. <button id="showall">Show them too</button></div>`:"";
-  $("grid").innerHTML=L.length?L.map(card).join(""):`<div class="empty">No deals match these filters.</div>`;
+  $("grid").innerHTML=L.length?L.slice(0,LIMIT).map(card).join("")+(L.length>LIMIT?`<button class="morebtn" id="morebtn">Show more deals (${L.length-LIMIT} more)</button>`:""):`<div class="empty">No deals match these filters.</div>`;
 }
 function wireImgs(root){root.querySelectorAll(".thumb.has-img img").forEach(im=>{
   const ok=()=>{if(im.naturalWidth>0)im.parentNode.classList.add("ok");};
@@ -717,7 +439,7 @@ function renderSources(){
       <small class="${isToday?"f":""}">${when}</small></button>`;}).join("");
   $("srcsum").textContent=`${fresh} of ${keys.length} updated today · tap one to see only its deals`;
 }
-function render(){renderSources();renderCats();renderSubs();renderSide();renderPills();renderGrid();wireImgs($("grid"));}
+function render(keep){if(!keep)LIMIT=60;renderSources();renderCats();renderSubs();renderSide();renderPills();renderGrid();wireImgs($("grid"));}
 
 // ---------- detail sheet ----------
 function openSheet(d){
@@ -763,7 +485,7 @@ $("subs").onclick=e=>{const b=e.target.closest(".chip");if(!b)return;const k=b.d
   if(!k)S.subs.clear();else S.subs.has(k)?S.subs.delete(k):S.subs.add(k);S.brand="";setHash();render();};
 $("srcs").onclick=e=>{const b=e.target.closest(".src");if(!b)return;const s=b.dataset.shop;
   S.shops.has(s)?S.shops.delete(s):S.shops.add(s);render();};
-$("grid").onclick=e=>{const c=e.target.closest(".card");if(c)openSheet(D[+c.dataset.id]);};
+$("grid").onclick=e=>{if(e.target.id==="morebtn"){LIMIT+=60;render(true);return;}const c=e.target.closest(".card");if(c)openSheet(D[+c.dataset.id]);};
 $("hint").onclick=e=>{if(e.target.id==="showall"){S.min=0;$("min").value=0;$("minv").textContent="0%";render();}};
 $("q").oninput=e=>{S.q=e.target.value.toLowerCase().trim();render();};
 $("sort").onchange=e=>{S.sort=e.target.value;render();};
@@ -794,7 +516,7 @@ $("fbtn").onclick=()=>$("side").classList.add("show");
 $("closef").onclick=()=>$("side").classList.remove("show");
 window.addEventListener("hashchange",()=>{readHash();render();});
 
-readHash();render();
+loadData().then(()=>{readHash();render();}).catch(e=>{$("grid").innerHTML='<div class="empty">Could not load the deals. Please reload the page.</div>';console.error(e);});
 })();
 </script>
 </body>
