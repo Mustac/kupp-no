@@ -8,6 +8,13 @@ import re
 
 # (subcategory id, regex) — order matters: specific before general
 RULES = [
+    # --- early, very specific
+    ("fridges", r"minikjøleskap"),
+    ("security", r"overvåk(n)?ingskamera|eufycam|ringeklokke|video doorbell|arlo|ring (stick|spotlight|video)"),
+    ("cooling", r"cpu-kjøler|cpu kjøler|kjølepasta|\bcooler\b(?! master m)"),
+    ("smarthome", r"fotoramme|frameo"),
+    ("tablets", r"apple pencil|stylus|ipad"),
+    ("wellness", r"øyemaske|massasje|massage"),
     # --- gaming
     ("vr", r"\bvr\b|virtual reality|quest 3|playstation vr|psvr"),
     ("controllers", r"kontroller|controller|dualsense|gamepad|joy-con|ratt og pedal|racing wheel|styrespak"),
@@ -15,6 +22,11 @@ RULES = [
     ("games", r"/spill/|\(ps5\)|\(ps4\)|\(switch 2?\)|\(xbox|\(pc\)|ps5-spill|switch-spill|videospill"),
     ("gheadsets", r"gaming ?headset|gamingheadset|arctis|hyperx cloud|razer (kraken|blackshark|barracuda)|logitech g\d{3}.*headset|steelseries.*headset"),
     ("chairs", r"gamingstol|gaming chair|gaming-stol|kontorstol|/stoler/"),
+    ("toys", r"funko|julekalender|actionfigur|\bfigur\b"),
+    ("pcacc", r"pc-veske|laptopveske|laptopsekk|datasekk|støvblåser|luftblåser|trykkluft"),
+    ("desktops", r"\bbuild \d{3}\b|i[579]/\d+/\d+tb|r[579]/\d+/\d+tb"),
+    ("shaving", r"hodebarberer"),
+    ("climate", r"airthings|radon|luftkvalitet|skotørker"),
     # --- computers
     ("gpu", r"skjermkort|geforce|radeon rx|rtx \d{4}"),
     ("cpu", r"prosessor|\bcpu\b|ryzen \d \d{4}x|core i\d-\d{4,5}k|core ultra \d \d{3}k"),
@@ -77,7 +89,7 @@ RULES = [
     ("boards", r"skjærebrett|skjærefjøl|cutting board"),
     ("ovenware", r"ildfast|ovnfast|bakeform|langpanne|pizzasten|pizza stone"),
     ("tableware", r"tallerken|asjett|glass\b|kopp|krus|bestikk|servise|bolle|skål|ramekin|karaffel"),
-    ("food", r"sjokolade|kaffe\b|te\b|krydder|trøffel|gaveeske|delikatesse"),
+    ("food", r"sjokolade|\bte\b|krydder(?!kvern)|trøffel|gaveeske|delikatesse"),
     ("utensils", r"redskap|termometer|visp|slikkepott|rivjern|mandolin|salatslynge|sil\b|tang\b|spade\b|øse|hvitløkspresse|saks\b"),
     # --- beauty & health
     ("oral", r"tannbørste|toothbrush|munnskyll|tannkrem|oral-b|sonicare|vannflosser|munnstykke|irrigator"),
@@ -110,7 +122,7 @@ PATH_HINTS = [
     ("/oppvaskmaskin", "dishwashers"), ("/komfyr", "ovens"), ("/stekeovn", "ovens"), ("/platetopp", "ovens"),
     ("/robotstovsuger", "robovac"), ("/stovsuger", "vacuums"),
     ("/kaffe", "coffee"), ("/kjokkenmaskin", "machines"), ("/airfryer", "smallapp"),
-    ("/personlig-pleie", "hair"), ("/harpleie", "hair"), ("/barbering", "shaving"), ("/tannpleie", "oral"),
+    ("/harfoner", "hair"), ("/rettetang", "hair"), ("/harpleie", "hair"), ("/barbering", "shaving"), ("/tannpleie", "oral"),
     ("/lego", "lego"), ("/leker", "toys"),
     ("/el-sparkesykkel", "bikes"), ("/sykkel", "bikes"), ("/trening", "fitness"),
     ("/printer", "printers"), ("/nettverk", "network"), ("/ruter", "network"),
@@ -120,8 +132,19 @@ PATH_HINTS = [
 ]
 
 
+def _path(url: str) -> str:
+    """The shop's specific category path: drop the domain, 'product' and the top-level category."""
+    from urllib.parse import urlparse
+    segs = [x for x in urlparse(url.lower()).path.split("/") if x]
+    if segs and segs[0] in ("product", "produkt", "p"):
+        segs = segs[1:]
+    if len(segs) > 2:
+        segs = segs[1:]
+    return "/" + "/".join(segs) + "/"
+
+
 def classify(name: str, url: str = "") -> str:
-    path = url.lower()
+    path = _path(url) if url.startswith("http") else url.lower()
     text = (name or "").lower()
     # 1) product name rules (most precise)
     for sub, rx in RULES:
