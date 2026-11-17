@@ -17,6 +17,18 @@ header{padding:24px 0 14px}
 .logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:38px;letter-spacing:-1.5px;line-height:1;cursor:pointer}
 .logo span{color:var(--acc)}
 .tag{color:var(--mute);font-size:14px}
+.srchead{display:flex;align-items:baseline;gap:8px;margin-top:16px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);font-weight:600}
+.srchead small{text-transform:none;letter-spacing:0;font-weight:400}
+.srcs{display:flex;gap:8px;overflow-x:auto;padding:8px 0 2px;scrollbar-width:none}
+.src{flex:none;display:flex;flex-direction:column;gap:3px;min-width:150px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:9px 12px;cursor:pointer;text-align:left}
+.src:hover{border-color:#50505c}.src.on{border-color:var(--acc)}
+.src .top{display:flex;align-items:center;gap:7px;font-weight:600;font-size:13.5px}
+.dot{width:9px;height:9px;border-radius:50%;flex:none;background:#6b6b78}
+.dot.fresh{background:#2ee66b;box-shadow:0 0 0 3px rgba(46,230,107,.18)}
+.dot.old{background:#ffb547}
+.src small{font-size:11.5px;color:var(--mute)}
+.src small.f{color:#2ee66b}
+.src a{font-size:11.5px;color:var(--mute);text-decoration:underline}
 .notice{margin-top:14px;background:#1d1a10;border:1px solid #4a3d14;color:#f1dfa8;border-radius:12px;padding:9px 13px;font-size:12.5px}
 .notice b{color:var(--warn)}
 /* category tiles */
@@ -126,7 +138,8 @@ footer a{color:var(--ink)}
 
 <header class="wrap">
   <div class="brand"><div class="logo" id="home">kupp<span>.</span>no</div><div class="tag">Only the big discounts from Norwegian shops · Black Week 2026</div></div>
-  <div class="notice"><b>Snapshot from 17 Nov 2026.</b> Prices change hourly. Prisjakt found over 325,000 prices were raised 10%+ in October before Black Week, so tap any deal and use <b>Price history on Prisjakt</b> before buying.</div>
+  <div class="srchead"><span>Data sources</span><small id="srcsum"></small></div>
+  <div class="srcs" id="srcs"></div>
   <div class="cats" id="cats"></div>
   <div class="subs" id="subs"></div>
 </header>
@@ -267,13 +280,14 @@ const CATS=[
 const CAT=Object.fromEntries(CATS.map(c=>[c.id,c]));
 const SUBNAME={};CATS.forEach(c=>c.subs.forEach(([k,n])=>SUBNAME[k]=n));
 
+// updated = date the deals were read from the source (YYYY-MM-DD, Norway time)
 const SRC={
- tek:{name:"Tek.no pick",url:"https://www.tek.no/i/wAr0An",note:"Tek.no lists this deal but doesn't name the shop. Use Prisjakt to find who has it cheapest."},
- kitchn:{name:"Kitchn",url:"https://www.kitchn.no/kampanje/blackfriday/"},
- sp:{name:"Scandinavian Photo",url:"https://www.scandinavianphoto.no/kampanjer/black-week"},
- komplett:{name:"Komplett",url:"https://www.komplett.no/kampanje/black-friday"},
- greencom:{name:"Greencom",url:"https://www.gamerguide.no/nyhet/black-friday-gaming-deals-2024-de-beste-tilbudene-p%C3%A5-gaming-pc-og-gamingutstyr"},
- telenor:{name:"Telenor",url:"https://www.telenor.no/black-week/"}
+ tek:{name:"Tek.no pick",label:"Tek.no picks",via:"Tested deals from many shops",updated:"2026-11-17",url:"https://www.tek.no/i/wAr0An",note:"Tek.no lists this deal but doesn't name the shop. Use Prisjakt to find who has it cheapest."},
+ kitchn:{name:"Kitchn",label:"Kitchn",via:"kitchn.no Black Weeks",updated:"2026-11-17",url:"https://www.kitchn.no/kampanje/blackfriday/"},
+ sp:{name:"Scandinavian Photo",label:"Scandinavian Photo",via:"scandinavianphoto.no Black Week",updated:"2026-11-17",url:"https://www.scandinavianphoto.no/kampanjer/black-week"},
+ komplett:{name:"Komplett",label:"Komplett",via:"via Gamerguide.no deal list",updated:"2026-11-17",url:"https://www.komplett.no/kampanje/black-friday"},
+ greencom:{name:"Greencom",label:"Greencom",via:"via Gamerguide.no deal list",updated:"2026-11-17",url:"https://www.gamerguide.no/nyhet/black-friday-gaming-deals-2024-de-beste-tilbudene-p%C3%A5-gaming-pc-og-gamingutstyr"},
+ telenor:{name:"Telenor",label:"Telenor",via:"telenor.no Black Week",updated:"2026-11-17",url:"https://www.telenor.no/black-week/"}
 };
 
 // [name, brand, source, now, before, category, sub, ref (f=shop's official before-price, l=launch/test/guide price), flag]
@@ -687,7 +701,23 @@ function wireImgs(root){root.querySelectorAll(".thumb.has-img img").forEach(im=>
   const ok=()=>{if(im.naturalWidth>0)im.parentNode.classList.add("ok");};
   const bad=()=>{im.parentNode.classList.remove("has-img");im.remove();};
   if(im.complete){im.naturalWidth>0?ok():bad();}else{im.addEventListener("load",ok);im.addEventListener("error",bad);}});}
-function render(){renderCats();renderSubs();renderSide();renderPills();renderGrid();wireImgs($("grid"));}
+function localDay(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+function renderSources(){
+  const today=localDay(new Date());
+  const keys=Object.keys(SRC);
+  let fresh=0;
+  $("srcs").innerHTML=keys.map(k=>{
+    const s=SRC[k], n=D.filter(d=>d.src===k).length;
+    const days=Math.round((new Date(today)-new Date(s.updated))/864e5);
+    const isToday=days===0; if(isToday)fresh++;
+    const when=isToday?"Updated today":days===1?"Updated yesterday":"Updated "+new Date(s.updated).toLocaleDateString("en-GB",{day:"numeric",month:"short"});
+    return `<button class="src${S.shops.has(s.name)?" on":""}" data-shop="${esc(s.name)}" title="Show only ${esc(s.label)} deals">
+      <span class="top"><span class="dot ${isToday?"fresh":days<=2?"old":""}"></span>${esc(s.label)}</span>
+      <small>${n} deals · ${esc(s.via)}</small>
+      <small class="${isToday?"f":""}">${when}</small></button>`;}).join("");
+  $("srcsum").textContent=`${fresh} of ${keys.length} updated today · tap one to see only its deals`;
+}
+function render(){renderSources();renderCats();renderSubs();renderSide();renderPills();renderGrid();wireImgs($("grid"));}
 
 // ---------- detail sheet ----------
 function openSheet(d){
@@ -731,6 +761,8 @@ $("cats").onclick=e=>{const b=e.target.closest(".cat");if(!b)return;S.cat=b.data
   window.scrollTo({top:$("cats").offsetTop-10,behavior:"smooth"});};
 $("subs").onclick=e=>{const b=e.target.closest(".chip");if(!b)return;const k=b.dataset.sub;
   if(!k)S.subs.clear();else S.subs.has(k)?S.subs.delete(k):S.subs.add(k);S.brand="";setHash();render();};
+$("srcs").onclick=e=>{const b=e.target.closest(".src");if(!b)return;const s=b.dataset.shop;
+  S.shops.has(s)?S.shops.delete(s):S.shops.add(s);render();};
 $("grid").onclick=e=>{const c=e.target.closest(".card");if(c)openSheet(D[+c.dataset.id]);};
 $("hint").onclick=e=>{if(e.target.id==="showall"){S.min=0;$("min").value=0;$("minv").textContent="0%";render();}};
 $("q").oninput=e=>{S.q=e.target.value.toLowerCase().trim();render();};
