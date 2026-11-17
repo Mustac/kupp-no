@@ -132,6 +132,22 @@ footer a{color:var(--ink)}
   .thumb{height:100px}.thumb svg{width:46px;height:46px}
   .logo{font-size:32px}
 }
+/* PC / wide screens: show every category, source and subcategory at once instead of a sideways row */
+@media(min-width:861px){
+  .cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;overflow:visible}
+  .cat{width:auto}
+  .cat:hover{border-color:var(--c);transform:translateY(-2px)}
+  .cat{transition:border-color .15s,transform .15s}
+  .srcs{flex-wrap:wrap;overflow:visible}
+  .src{min-width:0;flex:1 1 150px;max-width:220px;padding:7px 11px;gap:1px}
+  .src .viatxt{display:none}
+  .src .top{font-size:13px}
+  .subs{flex-wrap:wrap;overflow:visible}
+}
+/* narrow window on a PC: mouse wheel scrolls the rows sideways, and a thin scrollbar shows */
+@media(max-width:860px) and (hover:hover){
+  .cats,.srcs,.subs{scrollbar-width:thin;scrollbar-color:#3a3a44 transparent}
+}
 .closef{display:none;width:100%;margin-top:12px;background:var(--acc);color:#111;border:none;border-radius:10px;padding:11px;font-weight:600;cursor:pointer}
 </style>
 </head>
@@ -440,7 +456,7 @@ function renderSources(){
     const when=isToday?"Updated today":days===1?"Updated yesterday":"Updated "+new Date(s.updated).toLocaleDateString("en-GB",{day:"numeric",month:"short"});
     return `<button class="src${S.shops.has(s.name)?" on":""}" data-shop="${esc(s.name)}" title="Show only ${esc(s.label)} deals">
       <span class="top"><span class="dot ${isToday?"fresh":days<=2?"old":""}"></span>${esc(s.label)}</span>
-      <small>${n} deals · ${esc(s.via)}</small>
+      <small>${n} deals<span class="viatxt"> · ${esc(s.via)}</span></small>
       <small class="${isToday?"f":""}">${when}</small></button>`;}).join("");
   $("srcsum").textContent=`${fresh} of ${keys.length} updated today · tap one to see only its deals`;
 }
@@ -517,6 +533,9 @@ function resetAll(){Object.assign(S,{cat:"",subs:new Set(),q:"",min:30,pmin:"",p
   $("q").value="";$("min").value=30;$("minv").textContent="30%";$("pmin").value=$("pmax").value="";
   $("real").checked=$("reconly").checked=$("noclub").checked=false;$("sort").value="best";setHash();render();}
 $("reset").onclick=resetAll;$("home").onclick=resetAll;
+// mouse wheel over a sideways row scrolls it sideways (narrow windows on a PC)
+["cats","srcs","subs"].forEach(id=>$(id).addEventListener("wheel",e=>{const el=$(id);if(el.scrollWidth<=el.clientWidth+2||Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
+  const max=el.scrollWidth-el.clientWidth;if((e.deltaY<0&&el.scrollLeft<=0)||(e.deltaY>0&&el.scrollLeft>=max-1))return;e.preventDefault();el.scrollLeft+=e.deltaY;},{passive:false}));
 let lockY=0;
 function lockPage(){if(document.body.classList.contains("lock"))return;lockY=window.scrollY;document.body.style.top=(-lockY)+"px";document.body.classList.add("lock");}
 function unlockPage(){if(!document.body.classList.contains("lock"))return;document.body.classList.remove("lock");document.body.style.top="";window.scrollTo(0,lockY);}
