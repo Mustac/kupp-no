@@ -280,6 +280,9 @@ bikes:"M10 34m-7 0a7 7 0 1 0 14 0a7 7 0 1 0-14 0 M38 34m-7 0a7 7 0 1 0 14 0a7 7 
 fitness:"M4 20v8 M44 20v8 M8 16v16h4V16z M36 16v16h4V16z M12 24h24",
 outdoor:"M4 42L20 12l8 14 4-6 12 22z M18 28l4 4 4-4",
 other:"M10 16l14-8 14 8v18l-14 8-14-8z M10 16l14 8 14-8 M24 24v18",
+clothing:"M17 5l-11 6 4 9 5-3v26h18V17l5 3 4-9-11-6c-1 4-4 6-7 6s-6-2-7-6z",
+shoes:"M4 30V16h10l4 6 10 2c8 2 14 4 16 10v4H4z M4 38h40 M14 22h6",
+winter:"M8 42L40 6 M14 44L44 10 M30 22l8 2 M24 28l8 2 M6 32l8 2",
 printers:"M14 5h20v11H14z M6 16h36v17H6z M14 28h20v15H14z M18 34h12 M18 38h8"
 };
 document.getElementById("icons").innerHTML=Object.entries(IC).map(([k,d])=>
@@ -311,7 +314,7 @@ const CATS=[
  {id:"beauty",name:"Beauty & Health",c:"#ff7ac6",icon:"hair",subs:[
   ["hair","Hair styling"],["shaving","Shaving & IPL"],["oral","Toothbrushes"],["skincare","Skincare & perfume"],["wellness","Massage & health"]]},
  {id:"toys",name:"Toys & LEGO",c:"#ffd84d",icon:"lego",subs:[["lego","LEGO"],["toys","Toys & games"]]},
- {id:"sports",name:"Sports & Outdoor",c:"#5ee0c9",icon:"bikes",subs:[["bikes","E-scooters & bikes"],["fitness","Fitness"],["outdoor","Outdoor"]]},
+ {id:"sports",name:"Sports & Outdoor",c:"#5ee0c9",icon:"bikes",subs:[["clothing","Clothing"],["shoes","Shoes"],["winter","Ski & winter"],["bikes","Bikes & e-scooters"],["fitness","Fitness"],["outdoor","Outdoor & camping"]]},
  {id:"other",name:"Other",c:"#9a9aa3",icon:"other",subs:[["other","Other"]]}
 ];
 const CAT=Object.fromEntries(CATS.map(c=>[c.id,c]));

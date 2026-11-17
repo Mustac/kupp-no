@@ -36,6 +36,7 @@ MULTI_BRANDS = ["Bang & Olufsen", "Cooler Master", "Fractal Design", "Modern Hou
                 "Jamie Oliver", "Western Digital", "Be Quiet", "Mission SG", "Chef Matteo", "Andersson",
                 "Sage Appliances", "Kjell & Company", "Clas Ohlson", "Hama", "Philips Hue", "Google Pixel",
                 "Apple", "Samsung", "Sony", "LG", "TCL", "Hisense", "Xiaomi"]
+BADGES = {"outlet", "bestselger", "nyhet", "kun på nett", "medlemspris", "klubbpris", "eksklusiv", "black week", "tilbud", "nyheter"}
 SKIP_FIRST = {"brukt", "demo", "outlet", "ny", "nye", "pakke", "black", "week", "tilbud"}
 
 
@@ -88,6 +89,11 @@ def main():
         ib, ub, iq = raw.get("imgBase", ""), raw.get("urlBase", ""), raw.get("imgSuffix", "")
         for row in raw["d"]:
             name, now, was, img, url = row[:5]
+            if not name or len(name) < 5 or re.fullmatch(r"-?\d+\s*%", name.strip()) or name.strip().lower() in BADGES:
+                # badge text instead of a name: use the product's web address
+                slug = [x for x in url.split("/") if x and x not in ("p",)]
+                slug = next((x for x in reversed(slug) if re.search(r"[a-z]{3}", x) and "-" in x), "")
+                name = slug.replace("-", " ").strip().capitalize()
             img = (ib + img + iq) if img and not img.startswith("http") else img
             url = (ub + url) if url and not url.startswith("http") else url
             add(name, guess_brand(name), sid, now, was, classify(name, url), "f", "", img, url)
